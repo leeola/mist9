@@ -1,0 +1,42 @@
+{
+  "name": "mist9",
+  "version": "0.0.0",
+  "description": "Dragons, dragons everywhere.",
+  "keywords": [
+    "dragons"
+  ],
+  "author": "leeolayvar <leeolayvar@gmail.com> (http://leeolayvar.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/leeolayvar/mist9.git"
+  },
+  "bugs": {
+    "url": "http://github.com/leeolayvar/mist9/issues"
+  },
+  "scripts": {
+    "prepublish": "cake prepublish",
+    "test": "cake test"
+  },
+  "bin": {
+    "fenearstreamer": "./build/bin/mist9.js"
+  },
+  "devDependencies": {
+    "should": "0.5.x",
+    "coffee-script": "1.3.x",
+    "bork": "0.0.x",
+    "walker": "1.0.x"
+  },
+  "dependencies": {
+    "nomnom": "1.5.x",
+    "bork": "0.0.x",
+    "forever": ""
+  },
+  "engine": "node",
+  "main": "./build/lib/index.js",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/leeolayvar/mist9/master/LICENSE"
+    }
+  ]
+}
