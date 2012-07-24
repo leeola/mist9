@@ -4,9 +4,13 @@
 # Copyright (c) 2012 Lee Olayvar <leeolayvar@gmail.com>
 # MIT Licensed
 #
+plates = require 'plates'
+views = require './views'
 app = require './app'
 
 
 
 app.router.get '/', () ->
-  @res.end 'Prepare for dragons, please stand by...'
+  @res.writeHead 200, options =
+    'Content-Type': 'text/html'
+  @res.end views.base
