@@ -5,10 +5,10 @@
 # MIT Licensed
 #
 path = require 'path'
-
 nomnom = require 'nomnom'
 pork = require 'pork'
 
+server = require '../../server'
 
 
 
@@ -44,5 +44,6 @@ nomnom.options
 options = nomnom.parse()
 
 
-console.log 'Hello mist9 user!'
-console.log "Argv: #{JSON.stringify(options, undefined, 2)}"
+
+console.log "mist9 is now available at: localhost:#{options.port}."
+server.app.start(options.port)
