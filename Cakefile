@@ -100,9 +100,23 @@ bork_task = bork()
 
 task 'build', 'build all', ->
   invoke 'build:bin'
+  invoke 'build:client'
   invoke 'build:lib'
+  invoke 'build:server'
   invoke 'build:test'
   bork_task.start()
+
+task 'build:bin', 'build bin', ->
+  console.log 'build:bin start()'
+  bork_task.link (done) -> copy_compile './bin', './build/bin', ->
+    console.log 'build:bin end'
+    done()
+
+task 'build:client', 'build client', ->
+  console.log 'build:client start()'
+  bork_task.link (done) -> copy_compile './client', './build/client', ->
+    console.log 'build:client end'
+    done()
 
 task 'build:lib', 'build lib', ->
   console.log 'build:lib start()'
@@ -110,10 +124,10 @@ task 'build:lib', 'build lib', ->
     console.log 'build:lib end'
     done()
 
-task 'build:bin', 'build bin', ->
-  console.log 'build:bin start()'
-  bork_task.link (done) -> copy_compile './bin', './build/bin', ->
-    console.log 'build:bin end'
+task 'build:server', 'build server', ->
+  console.log 'build:server start()'
+  bork_task.link (done) -> copy_compile './server', './build/server', ->
+    console.log 'build:server end'
     done()
 
 task 'build:test', 'build test', ->
@@ -141,7 +155,10 @@ task 'test:nobuild', 'just run the tests, don\'t build anything', ->
       done()
 
 task 'prepublish', 'build all, test all. designed to work before `npm publish`', ->
+  invoke 'build:bin'
+  invoke 'build:client'
   invoke 'build:lib'
+  invoke 'build:server'
   invoke 'build:test'
   invoke 'test:nobuild'
   bork_task.start()
